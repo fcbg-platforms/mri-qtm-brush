@@ -16,7 +16,7 @@ class Render(BackgroundPlotter):
         self,
         affine: mp.sharedctypes.SynchronizedArray,
     ):
-        super().__init__()
+        super().__init__(auto_update=False, toolbar=False, menu_bar=False)
         check_type(affine, (mp.sharedctypes.SynchronizedArray,), "affine")
         if len(affine) != 16:
             raise ValueError(
@@ -36,9 +36,11 @@ class Render(BackgroundPlotter):
         ]
         for point in self._points:
             self.add_mesh(point)
-        self.add_callback(self._callback, interval=17)
+        self.add_callback(self._callback, interval=10)
 
     def _callback(self):
         affine = np.array(self._affine[:]).reshape(4, 4)
+        logger.debug("Applying affine transformation:\n%s\n", affine)
         for point in self._points:
             point.transform(affine)
+        self.render()
