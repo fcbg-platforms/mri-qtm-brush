@@ -23,7 +23,7 @@ dependencies = [
   'packaging',
   'psutil',
   'pyvista',
-  'pyvistaqt'
+  'pyvistaqt',
   'qtm_rt',
   'qtpy',
 ]
