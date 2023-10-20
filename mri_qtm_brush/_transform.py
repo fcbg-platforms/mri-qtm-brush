@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from numpy.typing import NDArray
 
 
-def _quat_to_rot(quat: NDArray[float]) -> NDArray[float]:
+def quat_to_rot(quat: NDArray[float]) -> NDArray[float]:
     """Convert a set of quaternions to rotations.
 
     Parameters
@@ -46,16 +46,16 @@ def _quat_to_rot(quat: NDArray[float]) -> NDArray[float]:
     return rotation
 
 
-def _quat_to_affine(quat: NDArray[float]) -> NDArray[float]:
+def quat_to_affine(quat: NDArray[float]) -> NDArray[float]:
     """Convert quaternion to 4x4 affine transformaton."""
     assert quat.shape == (6,)
     affine = np.eye(4)
-    affine[:3, :3] = _quat_to_rot(quat[:3])
+    affine[:3, :3] = quat_to_rot(quat[:3])
     affine[:3, 3] = quat[3:]
     return affine
 
 
-def _fit_matched_points(
+def fit_matched_points(
     p: NDArray[float],
     x: NDArray[float],
     weights: Optional[NDArray[float]] = None,
@@ -103,7 +103,7 @@ def _fit_matched_points(
     quat[:3] = v[1:, -1]
     if v[0, -1] != 0:
         quat[:3] *= np.sign(v[0, -1])
-    rot = _quat_to_rot(quat[:3])
+    rot = quat_to_rot(quat[:3])
     # scale factor is easy once we know the rotation
     if scale:  # p is "right" (from), x is "left" (to) in Horn 1987
         dev_x = x - mu_x
