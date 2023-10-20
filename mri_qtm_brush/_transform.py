@@ -1,3 +1,5 @@
+"""Transformation module, implementation taken from MNE-Python."""
+
 from __future__ import annotations  # c.f. PEP 563, PEP 649
 
 import numpy as np
