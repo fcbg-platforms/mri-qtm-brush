@@ -73,5 +73,4 @@ def setup(
 
     # prepare asyncio event loop in a separate thread
     asyncio.get_event_loop().create_task(_setup(ip, version))
-    if not asyncio.get_event_loop().is_running():
-        asyncio.get_event_loop().run_forever()
+    asyncio.get_event_loop().run_forever()

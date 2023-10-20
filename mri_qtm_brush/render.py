@@ -11,8 +11,12 @@ from .utils._checks import check_type
 
 
 class Render(BackgroundPlotter):
-    def __init__(self, affine: mp.sharedctypes.SynchronizedArray):
-        """Create rendering plotter."""
+    """Render window."""
+
+    def __init__(
+        self,
+        affine: mp.sharedctypes.SynchronizedArray,
+    ):
         super().__init__()
         check_type(affine, (mp.sharedctypes.SynchronizedArray,), "affine")
         if len(affine) != 16:
@@ -26,9 +30,10 @@ class Render(BackgroundPlotter):
         )
         self._mesh_brush = reader.read()
         self.add_mesh(self._mesh_brush)
-        self.add_callback(self._callback, interval=100)
+        self._mesh_brush.points *= 1000
+        self.add_callback(self._callback, interval=17)
 
     def _callback(self):
         affine = np.array(self._affine[:]).reshape(4, 4)
-        logger.debug("Applying affine transformation:\n%s\n", affine)
         self._mesh_brush.transform(affine)
+        logger.debug("Brush center of mass: %s", self._mesh_brush.center_of_mass())
