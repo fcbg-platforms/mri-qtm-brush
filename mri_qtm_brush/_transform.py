@@ -2,6 +2,8 @@
 
 from __future__ import annotations  # c.f. PEP 563, PEP 649
 
+from typing import TYPE_CHECKING
+
 import numpy as np
 
 if TYPE_CHECKING:
