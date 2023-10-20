@@ -3,7 +3,7 @@ from __future__ import annotations  # c.f. PEP 563, PEP 649
 import numpy as np
 
 if TYPE_CHECKING:
-    from typing import Optional
+    from typing import Optional, Tuple
 
     from numpy.typing import NDArray
 
@@ -60,7 +60,7 @@ def _fit_matched_points(
     x: NDArray[float],
     weights: Optional[NDArray[float]] = None,
     scale: bool = False,
-):
+) -> Tuple[NDArray[float], float]:
     """Fit matched points using an analytical formula.
 
     Notes
