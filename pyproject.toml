@@ -29,11 +29,11 @@ dependencies = [
 ]
 description = 'Template for python projects.'
 keywords = [
-  'python',
-  'mri',
-  'motion-capture',
-  'qtm',
   'brush',
+  'motion-capture',
+  'mri',
+  'python',
+  'qtm',
   'tactile',
 ]
 license = {file = 'LICENSE'}
