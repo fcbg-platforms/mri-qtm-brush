@@ -51,7 +51,7 @@ def quat_to_rot(quat: NDArray[float]) -> NDArray[float]:
 
 
 def quat_to_affine(quat: NDArray[float]) -> NDArray[float]:
-    """Convert quaternion to 4x4 affine transformaton."""
+    """Convert quaternion to 4x4 affine transformation."""
     assert quat.shape == (6,)
     affine = np.eye(4)
     affine[:3, :3] = quat_to_rot(quat[:3])
