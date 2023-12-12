@@ -1,12 +1,13 @@
 from __future__ import annotations  # c.f. PEP 563, PEP 649
 
 import multiprocessing as mp
+
 import numpy as np
 import pyvista as pv
 from pyvistaqt import BackgroundPlotter
 
-from .utils.logs import logger
 from .utils._checks import check_type
+from .utils.logs import logger
 
 
 class Render(BackgroundPlotter):
@@ -31,7 +32,7 @@ class Render(BackgroundPlotter):
                 (28.15, 42.21, -31.08),
                 (50.67, -44.29, -28.88),
                 (-92.50, 1.43, 14.89),
-                (-265, 0, 0)
+                (-265, 0, 0),
             ]
         ]
         for point in self._points:
