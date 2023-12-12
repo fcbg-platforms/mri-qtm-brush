@@ -12,7 +12,7 @@ from .utils.logs import logger
 
 
 def on_packet_callback(packet):  # noqa: D401
-    """Callback function that is called everytime a data packet arrives from QTM."""
+    """Callback function that is called every time a data packet arrives from QTM."""
     global affine_array
     global markers_old
 
