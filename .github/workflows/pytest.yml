@@ -44,7 +44,7 @@ jobs:
       - name: Run pytest
         run: pytest mri_qtm_brush --cov=mri_qtm_brush --cov-report=xml --cov-config=pyproject.toml
       - name: Upload to codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           files: ./coverage.xml
           flags: unittests # optional
@@ -81,7 +81,7 @@ jobs:
       - name: Run pytest
         run: pytest mri_qtm_brush --cov=mri_qtm_brush --cov-report=xml --cov-config=pyproject.toml
       - name: Upload to codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
           files: ./coverage.xml
           flags: unittests # optional
