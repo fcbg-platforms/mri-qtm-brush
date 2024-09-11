@@ -1,3 +1,4 @@
+import os
 from io import StringIO
 
 import pytest
@@ -38,6 +39,8 @@ def test_sys_info():
 def test_gpu_info():
     """Test getting GPU info."""
     pytest.importorskip("pyvista")
+    if os.getenv("GITHUB_ACTIONS", "") == "true":
+        pytest.skip("Skip GPU test on GitHub Actions")
     version, renderer = _get_gpu_info()
     assert version is not None
     assert renderer is not None
