@@ -98,7 +98,6 @@ omit = [
   '**/tests/**',
 ]
 
-
 [tool.pytest.ini_options]
 addopts = '--durations 20 --junit-xml=junit-results.xml --verbose'
 filterwarnings = []
