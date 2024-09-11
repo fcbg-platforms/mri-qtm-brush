@@ -76,10 +76,10 @@ test = [
 mri_qtm_brush-sys_info = 'mri_qtm_brush.commands.sys_info:run'
 
 [project.urls]
-documentation = 'https://github.com/mscheltienne/mri-qtm-brush'
-homepage = 'https://github.com/mscheltienne/mri-qtm-brush'
-source = 'https://github.com/mscheltienne/mri-qtm-brush'
-tracker = 'https://github.com/mscheltienne/mri-qtm-brush/issues'
+documentation = 'https://github.com/fcbg-platforms/mri-qtm-brush'
+homepage = 'https://github.com/fcbg-platforms/mri-qtm-brush'
+source = 'https://github.com/fcbg-platforms/mri-qtm-brush'
+tracker = 'https://github.com/fcbg-platforms/mri-qtm-brush/issues'
 
 [tool.black]
 extend-exclude = '''
