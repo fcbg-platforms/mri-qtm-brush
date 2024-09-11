@@ -1,4 +1,4 @@
-from __future__ import annotations  # c.f. PEP 563, PEP 649
+from __future__ import annotations
 
 import asyncio
 import multiprocessing as mp
@@ -11,8 +11,8 @@ from .utils._checks import check_type
 from .utils.logs import logger
 
 
-def on_packet_callback(packet):  # noqa: D401
-    """Callback function that is called every time a data packet arrives from QTM."""
+def on_packet_callback(packet):
+    """Callback function that is called every time a data packet arrives from QTM."""  # noqa: D401, E501
     global affine_array
     global markers_old
 

@@ -59,12 +59,11 @@ full = [
   'mri_qtm_brush[all]',
 ]
 style = [
-  'black',
-  'codespell',
-  'isort',
-  'pydocstyle[toml]',
-  'ruff',
+  'codespell[toml]>=2.2.4',
+  'pre-commit',
+  'ruff>=0.6.0',
   'toml-sort',
+  'yamllint',
 ]
 test = [
   'pytest',
@@ -80,18 +79,6 @@ documentation = 'https://github.com/fcbg-platforms/mri-qtm-brush'
 homepage = 'https://github.com/fcbg-platforms/mri-qtm-brush'
 source = 'https://github.com/fcbg-platforms/mri-qtm-brush'
 tracker = 'https://github.com/fcbg-platforms/mri-qtm-brush/issues'
-
-[tool.black]
-extend-exclude = '''
-(
-      __pycache__
-    | .github
-    | setup.py
-)
-'''
-include = '\.pyi?$'
-line-length = 88
-target-version = ['py39']
 
 [tool.coverage.report]
 exclude_lines = [
@@ -112,21 +99,6 @@ omit = [
   '**/tests/**',
 ]
 
-[tool.isort]
-extend_skip_glob = [
-  'setup.py',
-]
-line_length = 88
-multi_line_output = 3
-profile = 'black'
-py_version = 39
-
-[tool.pydocstyle]
-add_ignore = 'D100,D104,D107'
-convention = 'numpy'
-ignore-decorators = '(copy_doc|property|.*setter|.*getter|pyqtSlot|Slot)'
-match = '^(?!setup|__init__|test_).*\.py'
-match-dir = '^mri_qtm_brush.*'
 
 [tool.pytest.ini_options]
 addopts = '--durations 20 --junit-xml=junit-results.xml --verbose'
@@ -134,14 +106,29 @@ filterwarnings = []
 minversion = '6.0'
 
 [tool.ruff]
-extend-exclude = [
-  "doc",
-  "setup.py",
-]
+extend-exclude = []
 line-length = 88
 
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401"]
+[tool.ruff.format]
+docstring-code-format = true
+line-ending = "lf"
+
+[tool.ruff.lint]
+ignore = []
+select = ['A', 'B', 'D', 'E', 'F', 'G', 'I', 'LOG', 'NPY', 'PIE', 'PT', 'T20', 'UP', 'W']
+
+[tool.ruff.lint.per-file-ignores]
+'*' = [
+  'B904', # 'Within an except clause, raise exceptions with raise ... from ...'
+  'D100', # 'Missing docstring in public module'
+  'D104', # 'Missing docstring in public package'
+  'D107', # 'Missing docstring in __init__'
+]
+'__init__.py' = ['F401']
+
+[tool.ruff.lint.pydocstyle]
+convention = 'numpy'
+ignore-decorators = ["mri_qtm_brush.utils._docs.copy_doc"]
 
 [tool.setuptools]
 include-package-data = false

@@ -1,14 +1,12 @@
 """Transformation module, implementation taken from MNE-Python."""
 
-from __future__ import annotations  # c.f. PEP 563, PEP 649
+from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
 import numpy as np
 
 if TYPE_CHECKING:
-    from typing import Optional, Tuple
-
     from numpy.typing import NDArray
 
 
@@ -62,9 +60,9 @@ def quat_to_affine(quat: NDArray[float]) -> NDArray[float]:
 def fit_matched_points(
     p: NDArray[float],
     x: NDArray[float],
-    weights: Optional[NDArray[float]] = None,
+    weights: NDArray[float] | None = None,
     scale: bool = False,
-) -> Tuple[NDArray[float], float]:
+) -> tuple[NDArray[float], float]:
     """Fit matched points using an analytical formula.
 
     Notes
